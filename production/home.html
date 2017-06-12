@@ -18,15 +18,6 @@
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
-    <style>
-    #map {
-        height:300px;
-        background:#6699cc;
-        }
-        #venues {
-        font-size:8px
-    }
-    </style>
   </head>
 
   <body class="nav-md">
@@ -35,7 +26,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-search"></i> <span>LLPF</span></a>
+              <a href="home.html" class="site_title"><i class="fa fa-search"></i> <span>LLPF</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -47,13 +38,20 @@
               <div class="menu_section">
                 <h3>Search By</h3>
                 <ul class="nav side-menu">
-                  <li>
-                      <a href="javascript:void(0)">
-                          <i class="fa fa-laptop"></i>
-                          Category
-                          <!-- <span class="label label-success pull-right">Coming Soon</span> -->
-                      </a>
-                  </li>
+                    <li>
+                        <a href="category.html">
+                            <i class="fa fa-laptop"></i>
+                            Category
+                            <!-- <span class="label label-success pull-right">Coming Soon</span> -->
+                        </a>
+                    </li>
+                    <li>
+                        <a href="query.html">
+                            <i class="fa fa-ellipsis-h"></i>
+                            Query
+                            <!-- <span class="label label-success pull-right">Coming Soon</span> -->
+                        </a>
+                    </li>
                 </ul>
               </div>
 
@@ -101,9 +99,6 @@
         <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
-              <div class="title_left">
-                search by
-              </div>
 
               <!-- <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -121,38 +116,111 @@
 
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h3>Category</h3>
-                            <a href="https://developer.foursquare.com/categorytree" target="_new">category id list</a>
+                    <div class="x_panel" style="height:600px;">
+                          <div class="x_title">
+                            <h2>Search by</h2>
                             <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <form id="frm1" class="form-horizontal form-label-left">
-                                  <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">near <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                      <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                                    </div>
-                                  </div>
-                                  <div class="form-group">
-                                    <label class="col-sm-3 control-label">category id *</label>
+                          </div>
 
-                                    <div class="col-sm-6">
-                                      <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="refer category id list">
-                                        <span class="input-group-btn">
-                                                          <button type="button" class="btn btn-primary" style="margin-right: 0px;" onclick="myFunction()">Go!</button>
-                                                      </span>
+                          <div class="x_content">
+                            <div class="row">
+
+                              <div class="col-md-12">
+
+                                <!-- price element -->
+                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                  <div class="pricing">
+                                    <div class="title" style="height: 90px; background: #337ab7;">
+                                      <h1>Category</h1>
+                                    </div>
+                                    <div class="x_content">
+                                      <div class="">
+                                        <div class="pricing_features" style="min-height: 110px;">
+                                          <ul class="list-unstyled text-left">
+                                            <li><i class="fa fa-times text-success"></i> near by</li>
+                                            <li><i class="fa fa-times text-success"></i> catergory id</li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <div class="pricing_footer">
+                                        <a href="category.html" class="btn btn-primary btn-block" role="button">Search <span> now!</span></a>
                                       </div>
                                     </div>
                                   </div>
-
-                                </form>
-                                <div id="posts">
                                 </div>
+                                <!-- price element -->
+
+                                <!-- price element -->
+                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                  <div class="pricing">
+                                    <div class="title" style="height: 90px; background: #337ab7;">
+                                      <h1>Query</h1>
+                                    </div>
+                                    <div class="x_content">
+                                      <div class="">
+                                        <div class="pricing_features" style="min-height: 110px;">
+                                          <ul class="list-unstyled text-left">
+                                            <li><i class="fa fa-times text-success"></i> near by</li>
+                                            <li><i class="fa fa-times text-success"></i> search query</li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <div class="pricing_footer">
+                                        <a href="query.html" class="btn btn-primary btn-block" role="button">Search <span> now!</span></a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- price element -->
+
+                                <!-- price element -->
+                                <!-- <div class="col-md-3 col-sm-6 col-xs-12">
+                                  <div class="pricing">
+                                    <div class="title" style="height: 90px;">
+                                      <h1>Category</h1>
+                                    </div>
+                                    <div class="x_content">
+                                      <div class="">
+                                        <div class="pricing_features" style="min-height: 110px;">
+                                          <ul class="list-unstyled text-left">
+                                            <li><i class="fa fa-times text-success"></i> near by</li>
+                                            <li><i class="fa fa-times text-success"></i> catergory id</li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <div class="pricing_footer">
+                                        <a href="javascript:void(0);" class="btn btn-primary btn-block" role="button">Download <span> now!</span></a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div> -->
+                                <!-- price element -->
+
+                                <!-- price element -->
+                                <!-- <div class="col-md-3 col-sm-6 col-xs-12">
+                                  <div class="pricing">
+                                    <div class="title" style="height: 90px;">
+                                      <h1>Category</h1>
+                                    </div>
+                                    <div class="x_content">
+                                      <div class="">
+                                        <div class="pricing_features" style="min-height: 110px;">
+                                          <ul class="list-unstyled text-left">
+                                            <li><i class="fa fa-times text-success"></i> near by</li>
+                                            <li><i class="fa fa-times text-success"></i> catergory id</li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                      <div class="pricing_footer">
+                                        <a href="javascript:void(0);" class="btn btn-primary btn-block" role="button">Download <span> now!</span></a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div> -->
+                                <!-- price element -->
+                              </div>
                             </div>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -163,7 +231,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            LLPF - free to use
+            LLPF - free to use v0.1.3
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -182,50 +250,5 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-
-    <script>
-    Date.prototype.toMyString = function () {
-        function padZero(obj) {
-            obj = obj + '';
-            if (obj.length == 1)
-                  obj = "0" + obj
-              return obj;
-            }
-
-            var output = "";
-            output += this.getFullYear();
-            output += padZero(this.getMonth()+1);
-            output += padZero(this.getDate());
-
-            return output;
-        }
-        function myFunction() {
-            var x = document.getElementById("frm1");
-            var near = "near=";
-            near = x.elements[0].value;
-            category = x.elements[1].value;
-            // alert(near);
-            // alert(category)
-
-            var near_val = near;
-            var category_val = "&categoryId=" + category;
-            var d = new Date();
-            var auth = "&client_id=OSUJJBU0Z4MOAMEJBVOPIF22X5PIJ10CYQ3W3JXPJH13ATYZ&client_secret=0YRGI4STP0IETM2FGFFVVXHCVRIHBALJVH2412ZMDW5CQQ24&v=" + d.toMyString();
-            var link = "https://api.foursquare.com/v2/venues/search?near=" + near_val + category_val + auth;
-
-            // "https://api.foursquare.com/v2/venues/search?near=dubai&categoryId=50aa9e094b90af0d42d5de0d&client_id=OSUJJBU0Z4MOAMEJBVOPIF22X5PIJ10CYQ3W3JXPJH13ATYZ&client_secret=0YRGI4STP0IETM2FGFFVVXHCVRIHBALJVH2412ZMDW5CQQ24&v=20170712"
-            $.getJSON(link,
-            function(data){
-                console.log(data);
-          $.each(data.response.venues, function(i,product){
-            content = '<p><strong>' + product.name + '</strong>' + ' ';
-            content += product.location.lat + ' ';
-            content += product.location.lng + '</p>';
-            content += '<br/>';
-            $(content).appendTo("#posts");
-          });
-        });
-        }
-    </script>
   </body>
 </html>
