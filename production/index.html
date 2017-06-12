@@ -183,7 +183,21 @@
     <script src="../build/js/custom.min.js"></script>
 
     <script>
-    var map;
+    Date.prototype.toMyString = function () {
+        function padZero(obj) {
+            obj = obj + '';
+            if (obj.length == 1)
+                  obj = "0" + obj
+              return obj;
+            }
+
+            var output = "";
+            output += this.getFullYear();
+            output += padZero(this.getMonth()+1);
+            output += padZero(this.getDate());
+
+            return output;
+        }
         function myFunction() {
             var x = document.getElementById("frm1");
             var near = "near=";
@@ -194,9 +208,8 @@
 
             var near_val = near;
             var category_val = "&categoryId=" + category;
-            var date = new Date();
-            var formattedDate = moment(date).format('YYYYMMDD');
-            var auth = "&client_id=OSUJJBU0Z4MOAMEJBVOPIF22X5PIJ10CYQ3W3JXPJH13ATYZ&client_secret=0YRGI4STP0IETM2FGFFVVXHCVRIHBALJVH2412ZMDW5CQQ24&v=" + formattedDate;
+            var d = new Date();
+            var auth = "&client_id=OSUJJBU0Z4MOAMEJBVOPIF22X5PIJ10CYQ3W3JXPJH13ATYZ&client_secret=0YRGI4STP0IETM2FGFFVVXHCVRIHBALJVH2412ZMDW5CQQ24&v=" + d.toMyString();
             var link = "https://api.foursquare.com/v2/venues/search?near=" + near_val + category_val + auth;
 
             // "https://api.foursquare.com/v2/venues/search?near=dubai&categoryId=50aa9e094b90af0d42d5de0d&client_id=OSUJJBU0Z4MOAMEJBVOPIF22X5PIJ10CYQ3W3JXPJH13ATYZ&client_secret=0YRGI4STP0IETM2FGFFVVXHCVRIHBALJVH2412ZMDW5CQQ24&v=20170712"
