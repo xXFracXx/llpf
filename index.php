@@ -1,3 +1,1 @@
-<?php
-header('Location: /production/index.html');
-?>
+<?php include_once("/production/home.html"); ?>
