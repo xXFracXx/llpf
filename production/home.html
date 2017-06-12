@@ -124,7 +124,7 @@
                     <div class="x_panel">
                         <div class="x_title">
                             <h3>Category</h3>
-                            <a href="https://developer.foursquare.com/categorytree" target="_new">category list</a>
+                            <a href="https://developer.foursquare.com/categorytree" target="_new">category id list</a>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
@@ -141,7 +141,7 @@
 
                                     <div class="col-sm-6">
                                       <div class="input-group">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" placeholder="refer category id list">
                                         <span class="input-group-btn">
                                                           <button type="button" class="btn btn-primary" style="margin-right: 0px;" onclick="myFunction()">Go!</button>
                                                       </span>
@@ -204,8 +204,8 @@
             var near = "near=";
             near = x.elements[0].value;
             category = x.elements[1].value;
-            alert(near);
-            alert(category)
+            // alert(near);
+            // alert(category)
 
             var near_val = near;
             var category_val = "&categoryId=" + category;
