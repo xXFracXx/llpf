@@ -124,6 +124,7 @@
                     <div class="x_panel">
                         <div class="x_title">
                             <h3>Category</h3>
+                            <a href="https://developer.foursquare.com/categorytree" target="_new">category list</a>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
@@ -217,9 +218,9 @@
             function(data){
                 console.log(data);
           $.each(data.response.venues, function(i,product){
-            content = '<p>' + product.name + '</p>';
-            content += '<p>' + product.location.lat + '</p>';
-            content += '<p>' + product.location.lng + '</p>';
+            content = '<p><strong>' + product.name + '</strong>' + ' ';
+            content += product.location.lat + ' ';
+            content += product.location.lng + '</p>';
             content += '<br/>';
             $(content).appendTo("#posts");
           });
