@@ -1,3 +1,3 @@
 <?php
-header('Location: /production/home.html');
+header('Location: /production/index.html');
 ?>
