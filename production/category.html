@@ -216,6 +216,7 @@
             if(data.response.venues.length == 0){
                 $('#req404').show();
             }
+            var index = 0;
             $.each(data.response.venues, function (i, venues) {
                 content = '<p><strong>' + venues.name +
                 '</strong><br>' +
@@ -231,13 +232,14 @@
                 content = '<tr><td><ul class="list-inline"><li>';
                 content += '<img src="' + venues.categories[0].icon.prefix + 'bg_32' + venues.categories[0].icon.suffix + '" class="avatar" alt="Avatar">';
                 content += '</li></ul></td><td>';
-                content += '<a><strong>' + venues.name + '</strong></a>';
+                content += '<a href="#" class="pan-to-marker" data-marker-index="' + index + '"><strong>' + venues.name + '</strong></a>';
                 content += '<br><small>' + venues.categories[0].name + '</small></td><td style="vertical-align:middle;">';
                 content += '<span class="label label-default" style="font-family: monospace;">' + venues.location.lat.toFixed(6) + '</span>';
                 content += '</td><td style="vertical-align:middle;">';
                 content += '<span class="label label-default" style="font-family: monospace;">' + venues.location.lng.toFixed(6) + '</span>';
                 content += '</td></tr>';
                 $(content).appendTo("#posts");
+                index++;
             });
             map.addMarkers(markers_data);
             console.log(data);
@@ -290,6 +292,21 @@
                 map.fitZoom();
             }
         });
+
+        $(document).on('click', '.pan-to-marker', function (e) {
+           e.preventDefault();
+
+           var position, lat, lng, $index;
+
+           $index = $(this).data('marker-index');
+
+           position = map.markers[$index].getPosition();
+
+           lat = position.lat();
+           lng = position.lng();
+
+           map.setCenter(lat, lng);
+       });
 
         // $.getJSON(link,function(data){
         //     console.log(data);
