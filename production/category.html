@@ -306,6 +306,9 @@
            lng = position.lng();
 
            map.setCenter(lat, lng);
+           map.hideInfoWindows();
+           map.markers[$index].infoWindow.open(map, map.markers[$index]);
+           $('html,body').animate({scrollTop: $("#resdiv").offset().top},'slow');
        });
 
         // $.getJSON(link,function(data){
