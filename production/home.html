@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -22,172 +22,118 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script>
     $(function(){
-      $("#header").load("header.html");
-      $("#footer").load("footer.html");
+        $("#header").load("header.html");
+        $("#footer").load("footer.html");
     });
     </script>
-  </head>
+    <style>
+    a.disabled {
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+    </style>
+</head>
 
-  <body class="nav-md">
+<body class="nav-md">
     <div class="container body">
-      <div class="main_container">
-        <!-- header content -->
-        <div id="header"></div>
-        <!-- /header content -->
+        <div class="main_container">
+            <!-- header content -->
+            <div id="header"></div>
+            <!-- /header content -->
 
-        <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
+                    <div class="page-title">
 
-              <!-- <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
+                        <!-- <div class="title_right">
+                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
                     </span>
-                  </div>
                 </div>
-              </div> -->
             </div>
+        </div> -->
+    </div>
 
-            <div class="clearfix"></div>
+    <div class="clearfix"></div>
 
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="x_panel" style="height:600px;">
-                          <div class="x_title">
-                            <h2>Search by</h2>
-                            <div class="clearfix"></div>
-                          </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
 
-                          <div class="x_content">
-                            <div class="row">
+            <div class="x_panel" style="height:100%;">
+                <div class="jumbotron">
+                    <h1>Hello, world!</h1>
+                    <p>Landlord Property Finder, a Foursquare API search portal</p>
+                </div>
+                <div class="x_title">
+                    <h2><strong>Search by</strong></h2>
+                    <div class="clearfix"></div>
+                </div>
 
-                              <div class="col-md-12">
+                <div class="x_content">
 
-                                <!-- price element -->
-                                <div class="col-md-3 col-sm-6 col-xs-12">
-                                  <div class="pricing">
-                                    <div class="title" style="height: 90px; background: #337ab7;">
-                                      <h1>Category</h1>
+                    <div class="row">
+                        <div class="row top_tiles">
+                            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <a href="category.html">
+                                    <div class="tile-stats">
+                                        <div class="icon"><i class="fa fa-archive"></i></div>
+                                        <h3 style=" margin-top: 30px;">Category</h3>
+                                        <p>Locate properties by category</p>
                                     </div>
-                                    <div class="x_content">
-                                      <div class="">
-                                        <div class="pricing_features" style="min-height: 110px;">
-                                          <ul class="list-unstyled text-left">
-                                            <li><i class="fa fa-times text-success"></i> near by</li>
-                                            <li><i class="fa fa-times text-success"></i> catergory id</li>
-                                          </ul>
-                                        </div>
-                                      </div>
-                                      <div class="pricing_footer">
-                                        <a href="/production/category.html" class="btn btn-primary btn-block" role="button">Search <span> now!</span></a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <!-- price element -->
-
-                                <!-- price element -->
-                                <div class="col-md-3 col-sm-6 col-xs-12">
-                                  <div class="pricing">
-                                    <div class="title" style="height: 90px; background: #337ab7;">
-                                      <h1>Query</h1>
-                                    </div>
-                                    <div class="x_content">
-                                      <div class="">
-                                        <div class="pricing_features" style="min-height: 110px;">
-                                          <ul class="list-unstyled text-left">
-                                            <li><i class="fa fa-times text-success"></i> near by</li>
-                                            <li><i class="fa fa-times text-success"></i> search query</li>
-                                          </ul>
-                                        </div>
-                                      </div>
-                                      <div class="pricing_footer">
-                                        <a href="/production/query.html" class="btn btn-primary btn-block" role="button">Search <span> now!</span></a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <!-- price element -->
-
-                                <!-- price element -->
-                                <!-- <div class="col-md-3 col-sm-6 col-xs-12">
-                                  <div class="pricing">
-                                    <div class="title" style="height: 90px;">
-                                      <h1>Category</h1>
-                                    </div>
-                                    <div class="x_content">
-                                      <div class="">
-                                        <div class="pricing_features" style="min-height: 110px;">
-                                          <ul class="list-unstyled text-left">
-                                            <li><i class="fa fa-times text-success"></i> near by</li>
-                                            <li><i class="fa fa-times text-success"></i> catergory id</li>
-                                          </ul>
-                                        </div>
-                                      </div>
-                                      <div class="pricing_footer">
-                                        <a href="javascript:void(0);" class="btn btn-primary btn-block" role="button">Download <span> now!</span></a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div> -->
-                                <!-- price element -->
-
-                                <!-- price element -->
-                                <!-- <div class="col-md-3 col-sm-6 col-xs-12">
-                                  <div class="pricing">
-                                    <div class="title" style="height: 90px;">
-                                      <h1>Category</h1>
-                                    </div>
-                                    <div class="x_content">
-                                      <div class="">
-                                        <div class="pricing_features" style="min-height: 110px;">
-                                          <ul class="list-unstyled text-left">
-                                            <li><i class="fa fa-times text-success"></i> near by</li>
-                                            <li><i class="fa fa-times text-success"></i> catergory id</li>
-                                          </ul>
-                                        </div>
-                                      </div>
-                                      <div class="pricing_footer">
-                                        <a href="javascript:void(0);" class="btn btn-primary btn-block" role="button">Download <span> now!</span></a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div> -->
-                                <!-- price element -->
-                              </div>
+                                </a>
                             </div>
-                          </div>
+                            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <a href="query.html">
+                                    <div class="tile-stats">
+                                        <div class="icon"><i class="fa fa-gears"></i></div>
+                                        <h3 style=" margin-top: 30px;">Query</h3>
+                                        <p>Locate properties by query</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <a href="" class="disabled">
+                                    <div class="tile-stats">
+                                        <div class="icon"><i class="fa fa-ellipsis-h"></i></div>
+                                        <h3 style=" margin-top: 30px;">&nbsp;</h3>
+                                        <p>More coming soon</p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <div id="footer"></div>
-        <!-- /footer content -->
-      </div>
     </div>
+</div>
+</div>
+<!-- /page content -->
 
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
+<!-- footer content -->
+<div id="footer"></div>
+<!-- /footer content -->
+</div>
+</div>
 
-    <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
-    <script>
-  $("#header").load("header.html");
-  $("#footer").load("footer.html");
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+<script>
+$("#header").load("header.html");
+$("#footer").load("footer.html");
 </script>
-  </body>
+</body>
 </html>
