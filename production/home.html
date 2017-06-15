@@ -24,14 +24,16 @@
     $(function(){
         $("#header").load("/production/header.html");
         $("#footer").load("/production/footer.html");
+        $("#analytics").load("/production/analytics.html");
     });
     </script>
     <style>
-    a.disabled {
-        pointer-events: none;
-        cursor: not-allowed;
+    #map {
+        height:300px;
+        background:#fff;
     }
     </style>
+    <script id="analytics"></script>
 </head>
 
 <body class="nav-md">
