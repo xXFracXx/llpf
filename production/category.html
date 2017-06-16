@@ -33,13 +33,13 @@
     }
     </style>
     <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-48376108-5', 'auto');
-        ga('send', 'pageview');
+    ga('create', 'UA-48376108-5', 'auto');
+    ga('send', 'pageview');
     </script>
 </head>
 
@@ -90,21 +90,30 @@
                                 </div>
                                 <div class="x_content">
                                     <form id="frm1" class="form-horizontal form-label-left">
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">near <span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" required="required" class="form-control col-md-7 col-xs-12" placeholder="">
+                                        <div id="nearinput">
+                                            <div id="nearinput1">
+                                                <div class="form-group">
+                                                    <label class="col-sm-3 control-label">near<span class="required">*</span></label>
+
+                                                    <div class="col-sm-6">
+                                                        <div class="input-group" style="margin-bottom:0px">
+                                                            <input type="text" class="form-control" style="border-color:#ccc;" name="button1" required>
+                                                            <span class="input-group-btn">
+                                                                <button type="button" class="btn btn-default" name="button1" style="border-color:#ccc;margin-right: 0px;color: #ccc;" onclick="addnear()"><strong>+</strong></button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label">category id <span class="required">*</span></label>
+                                            <label class="col-sm-3 control-label">category id<span class="required">*</span></label>
 
                                             <div class="col-sm-6">
                                                 <div class="input-group">
                                                     <input id="autocomplete" type="text" class="form-control" placeholder="" required="required">
                                                     <span class="input-group-btn">
-                                                        <button type="button" class="btn btn-primary" style="margin-right: 0px;" onclick="myFunction()">Go!</button>
+                                                        <button type="button" class="btn btn-primary" style="margin-right: 0px;font-weight: 500;" onclick="myFunction()">Search</button>
                                                     </span>
                                                 </div>
                                             </div>
@@ -184,7 +193,7 @@
         var height = elem.offsetHeight;
 
         while ( elem = elem.offsetParent )
-            y += elem.offsetTop;
+        y += elem.offsetTop;
 
         var maxHeight = y + height;
         var isVisible = ( y < ( window.pageYOffset + window.innerHeight ) ) && ( maxHeight >= window.pageYOffset );
@@ -202,17 +211,17 @@
         list(tdata);
         function list(data){
             $.each(data.categories, function(i, data) {
-            if(data.id && data.name) {
-                catlist.push({
-                    value: data.name,
-                    data: data.id
-                });
-            }
-            if(data.categories) {
-                newdata = data;
-                list(newdata);
-            }
-        });
+                if(data.id && data.name) {
+                    catlist.push({
+                        value: data.name,
+                        data: data.id
+                    });
+                }
+                if(data.categories) {
+                    newdata = data;
+                    list(newdata);
+                }
+            });
         }
     })
 
@@ -223,61 +232,165 @@
         }
     });
 
+    var nearinputcount = 1;
+    var nearinputid = "";
+
+    function addnear() {
+        if(nearinputcount < 9) {
+            nearinputcount++;
+            content = '<div id="nearinput' + nearinputcount + '">' +
+            '<div class="form-group">' +
+            '<label class="col-sm-3 control-label">near <span class="required">*</span></label>' +
+            '<div class="col-sm-6">' +
+            '<div class="input-group" style="margin-bottom:0px">' +
+            '<span class="input-group-btn">' +
+            '<button type="button" class="btn btn-default" name="button' + nearinputcount + '" style="border-color:#ccc;margin-right: -2px;color: #ccc;" onclick="removenear()"><strong>-</strong></button>' +
+            '</span>' +
+            '<input type="text" class="form-control" style="border-color:#ccc;" name="button' + nearinputcount + '" required="required">' +
+            '<span class="input-group-btn">' +
+            '<button type="button" class="btn btn-default" name="button' + nearinputcount + '" style="border-color:#ccc;margin-right: 0px;color: #ccc;" onclick="addnear()"><strong>+</strong></button>' +
+            '</span>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+            $(content).appendTo("#nearinput");
+        } else if(nearinputcount < 10) {
+            nearinputcount++;
+            content = '<div id="nearinput' + nearinputcount + '">' +
+            '<div class="form-group">' +
+            '<label class="col-sm-3 control-label">near <span class="required">*</span></label>' +
+            '<div class="col-sm-6">' +
+            '<div class="input-group" style="margin-bottom:0px">' +
+            '<span class="input-group-btn">' +
+            '<button type="button" class="btn btn-default" name="button' + nearinputcount + '" style="border-color:#ccc;margin-right: -2px;color: #ccc;" onclick="removenear()"><strong>-</strong></button>' +
+            '</span>' +
+            '<input type="text" class="form-control" style="border-color:#ccc;" name="button' + nearinputcount + '" required="required">' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+            $(content).appendTo("#nearinput");
+        }
+    }
+
+    function removenear() {
+        if(nearinputcount > 1) {
+            nearinputid = "nearinput" + nearinputcount;
+            document.getElementById(nearinputid).remove();
+            nearinputcount--;
+        }
+    }
+
     function myFunction() {
         document.getElementById('resdiv').style.display = "block";
-        var map;
-        var items, markers_data = [];
-        var content;
-        var d = new Date();
-
         document.getElementById("posts").innerHTML = "";
+        $('#req404').hide();
+        resetError();
+        var map;
+        var items;
+        var d = new Date();
+        var index = 0;
         var x = document.getElementById("frm1");
-        var near = "near=";
-        near = x.elements[0].value;
-        category = x.elements[1].value;
-
-        var near_val = near;
-        var category_val = "&categoryId=" + category;
-        var auth = "&client_id=OSUJJBU0Z4MOAMEJBVOPIF22X5PIJ10CYQ3W3JXPJH13ATYZ&client_secret=0YRGI4STP0IETM2FGFFVVXHCVRIHBALJVH2412ZMDW5CQQ24&v=" + d.toMyString();
-        var link = "https://api.foursquare.com/v2/venues/search?near=" + near_val + category_val + auth;
-
-        $.getJSON(link, function(data) {})
-        .success(function(data) {
-            if(data.response.venues.length == 0){
-                $('#req404').show();
-            } else {
-                $('#req404').hide();
+        var near = "near=", nearArr = [], category;
+        var markers_data = [];
+        // $.each(x.elements, function (i, data) {
+        //     console.log(x.elements[i].value)
+        // });
+        if(nearinputcount > 1) {
+            for(i = 0; i <= nearinputcount; i++) {
+                if(nearinputcount == 1)
+                nearArr[i] = x.elements[i*3 - 1].value;
+                else if (i == nearinputcount)
+                category = x.elements[i*3 - 1].value;
+                else
+                nearArr[i] = x.elements[i*3].value;
             }
-            var index = 0;
-            $.each(data.response.venues, function (i, venues) {
-                content = '<p><strong>' + venues.name +
-                '</strong><br>' +
-                'Lat/Long: ' + venues.location.lat.toFixed(6) + ', ' + venues.location.lng.toFixed(6) + '</p>';
-                markers_data.push({
-                    lat: venues.location.lat,
-                    lng: venues.location.lng,
-                    title: venues.name,
-                    infoWindow: {
-                        content: '<row><p class="col-md-2" style="margin: 0 0 0px;">' + '<span class="image"><img src="' + venues.categories[0].icon.prefix + "bg_32" + venues.categories[0].icon.suffix + '" alt="img"></span></p><p class="col-md-10" style="margin: 0 0 0px;"' + content + '</p></row>'
+
+            $.each(nearArr, function(i, neardata) {
+                near = neardata;
+                var content;
+                var near_val = near;
+                var category_val = "&categoryId=" + category;
+                var auth = "&client_id=OSUJJBU0Z4MOAMEJBVOPIF22X5PIJ10CYQ3W3JXPJH13ATYZ&client_secret=0YRGI4STP0IETM2FGFFVVXHCVRIHBALJVH2412ZMDW5CQQ24&v=" + d.toMyString();
+                var link = "https://api.foursquare.com/v2/venues/search?near=" + near_val + category_val + auth;
+
+                $.getJSON(link, function(data) {
+                    if(data.response.venues.length == 0){
+                        $('#req404').show();
+                        inputError(i+1);
                     }
-                });
-                content = '<tr><td><ul class="list-inline"><li>';
-                content += '<img src="' + venues.categories[0].icon.prefix + 'bg_32' + venues.categories[0].icon.suffix + '" class="avatar" alt="Avatar">';
-                content += '</li></ul></td><td>';
-                content += '<a href="#" class="pan-to-marker" data-marker-index="' + index + '"><strong>' + venues.name + '</strong></a>';
-                content += '<br><small>' + venues.categories[0].name + '</small></td><td style="vertical-align:middle;">';
-                content += '<span class="label label-default" style="font-family: monospace;">' + venues.location.lat.toFixed(6) + '</span>';
-                content += '</td><td style="vertical-align:middle;">';
-                content += '<span class="label label-default" style="font-family: monospace;">' + venues.location.lng.toFixed(6) + '</span>';
-                content += '</td></tr>';
-                $(content).appendTo("#posts");
-                index++;
+                    $.each(data.response.venues, function (i, venues) {
+                        content = '<p><strong>' + venues.name +
+                        '</strong><br>' +
+                        'Lat/Long: ' + venues.location.lat.toFixed(6) + ', ' + venues.location.lng.toFixed(6) + '</p>';
+                        markers_data.push({
+                            lat: venues.location.lat,
+                            lng: venues.location.lng,
+                            title: venues.name,
+                            infoWindow: {
+                                content: '<row><p class="col-md-2" style="margin: 0 0 0px;">' + '<span class="image"><img src="' + venues.categories[0].icon.prefix + "bg_32" + venues.categories[0].icon.suffix + '" alt="img"></span></p><p class="col-md-10" style="margin: 0 0 0px;"' + content + '</p></row>'
+                            }
+                        });
+                        content = '<tr><td><ul class="list-inline"><li>';
+                        content += '<img src="' + venues.categories[0].icon.prefix + 'bg_32' + venues.categories[0].icon.suffix + '" class="avatar" alt="Avatar">';
+                        content += '</li></ul></td><td>';
+                        content += '<a href="#" class="pan-to-marker" data-marker-index="' + index + '"><strong>' + venues.name + '</strong></a>';
+                        content += '<br><small>' + venues.categories[0].name + '</small></td><td style="vertical-align:middle;">';
+                        content += '<span class="label label-default" style="font-family: monospace;">' + venues.location.lat.toFixed(6) + '</span>';
+                        content += '</td><td style="vertical-align:middle;">';
+                        content += '<span class="label label-default" style="font-family: monospace;">' + venues.location.lng.toFixed(6) + '</span>';
+                        content += '</td></tr>';
+                        $(content).appendTo("#posts");
+                        index++;
+                    });
+                    map.addMarkers(markers_data);
+                }).error(function() { $('#req404').show(); inputError(i+1); });
+                //.complete(function() { alert("Done"); });
             });
-            map.addMarkers(markers_data);
-            console.log(data);
-         })
-        .error(function() { $('#req404').show(); });
-        //.complete(function() { alert("Done"); });
+        } else {
+            near = x.elements[0].value;
+            category = x.elements[2].value;
+            var content;
+            var near_val = near;
+            var category_val = "&categoryId=" + category;
+            var auth = "&client_id=OSUJJBU0Z4MOAMEJBVOPIF22X5PIJ10CYQ3W3JXPJH13ATYZ&client_secret=0YRGI4STP0IETM2FGFFVVXHCVRIHBALJVH2412ZMDW5CQQ24&v=" + d.toMyString();
+            var link = "https://api.foursquare.com/v2/venues/search?near=" + near_val + category_val + auth;
+
+            $.getJSON(link, function(data) {
+                console.log(data.response.venues.length);
+                if(data.response.venues.length == 0){
+                    $('#req404').show();
+                    inputError(1);
+                }
+                $.each(data.response.venues, function (i, venues) {
+                    content = '<p><strong>' + venues.name +
+                    '</strong><br>' +
+                    'Lat/Long: ' + venues.location.lat.toFixed(6) + ', ' + venues.location.lng.toFixed(6) + '</p>';
+                    markers_data.push({
+                        lat: venues.location.lat,
+                        lng: venues.location.lng,
+                        title: venues.name,
+                        infoWindow: {
+                            content: '<row><p class="col-md-2" style="margin: 0 0 0px;">' + '<span class="image"><img src="' + venues.categories[0].icon.prefix + "bg_32" + venues.categories[0].icon.suffix + '" alt="img"></span></p><p class="col-md-10" style="margin: 0 0 0px;"' + content + '</p></row>'
+                        }
+                    });
+                    content = '<tr><td><ul class="list-inline"><li>';
+                    content += '<img src="' + venues.categories[0].icon.prefix + 'bg_32' + venues.categories[0].icon.suffix + '" class="avatar" alt="Avatar">';
+                    content += '</li></ul></td><td>';
+                    content += '<a href="#" class="pan-to-marker" data-marker-index="' + index + '"><strong>' + venues.name + '</strong></a>';
+                    content += '<br><small>' + venues.categories[0].name + '</small></td><td style="vertical-align:middle;">';
+                    content += '<span class="label label-default" style="font-family: monospace;">' + venues.location.lat.toFixed(6) + '</span>';
+                    content += '</td><td style="vertical-align:middle;">';
+                    content += '<span class="label label-default" style="font-family: monospace;">' + venues.location.lng.toFixed(6) + '</span>';
+                    content += '</td></tr>';
+                    $(content).appendTo("#posts");
+                    index++;
+                });
+                map.addMarkers(markers_data);
+            }).error(function() { $('#req404').show(); inputError(1); });
+            //.complete(function() { alert("Done"); });
+        }
 
         map = new GMaps({
             div: '#map',
@@ -302,27 +415,44 @@
         });
 
         $(document).on('click', '.pan-to-marker', function (e) {
-           e.preventDefault();
+            e.preventDefault();
 
-           var position, lat, lng, $index;
+            var position, lat, lng, $index;
 
-           $index = $(this).data('marker-index');
+            $index = $(this).data('marker-index');
+            position = map.markers[$index].getPosition();
 
-           position = map.markers[$index].getPosition();
+            lat = position.lat();
+            lng = position.lng();
 
-           lat = position.lat();
-           lng = position.lng();
+            map.panTo(position);
+            map.setZoom(14);
+            map.hideInfoWindows();
+            map.markers[$index].infoWindow.open(map, map.markers[$index]);
+            var canvas = document.getElementById("map");
+            if(!isVisibleInViewport(canvas))
+            $('html,body').animate({scrollTop: $("#resdiv").offset().top},'slow');
+        });
 
-           map.panTo(position);
-           map.setZoom(14);
-           map.hideInfoWindows();
-           map.markers[$index].infoWindow.open(map, map.markers[$index]);
-           var canvas = document.getElementById("map");
-           if(!isVisibleInViewport(canvas))
-               $('html,body').animate({scrollTop: $("#resdiv").offset().top},'slow');
+        function inputError(i) {
+            var buttonID = "button" + i;
+            var x = document.getElementsByName(buttonID);
+            for(j = 0; j < x.length; j++){
+                x[j].style.borderColor = "rgba(231,76,60,.88)";
+            }
+        }
 
-       });
+        function resetError() {
+            for(k = 1; k < nearinputcount+1 ; k++) {
+                var buttonID = "button" + k;
+                var x = document.getElementsByName(buttonID);
+                for(j = 0; j < x.length; j++){
+                    x[j].style.borderColor = "#ccc";
+                }
+            }
+        }
     }
+
     </script>
 </body>
 </html>
