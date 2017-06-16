@@ -34,8 +34,8 @@
     </style>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
         ga('create', 'UA-48376108-5', 'auto');
@@ -46,26 +46,25 @@
 <body class="nav-md" onload="$('#querytab').addClass('active');">
     <div class="container body">
         <div class="main_container">
-            <!-- header content -->
-            <div id="header"></div>
-            <!-- /header content -->
-            <!-- top navigation -->
-            <div class="top_nav">
-              <div class="nav_menu">
-                <nav>
-                  <div class="nav toggle">
-                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                  </div>
 
-                  <ul class="nav navbar-nav navbar-right">
-                    <li class="">
-                      <a class="user-profile dropdown-toggle">Landlord Property Finder
-                    </li>
-                  </ul>
-                </nav>
-              </div>
+            <!-- top navigation & header -->
+            <div id="header"></div>
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a class="user-profile dropdown-toggle">Landlord Property Finder</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
-            <!-- /top navigation -->
+            <!-- /top navigation & header-->
 
             <!-- page content -->
             <div class="right_col" role="main">
@@ -87,7 +86,6 @@
                             <div class="x_panel">
                                 <div class="x_title">
                                     <h3>Query</h3>
-                                    <!-- <a href="https://developer.foursquare.com/categorytree" target="_new">category id list</a> -->
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
@@ -100,11 +98,11 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label">query *</label>
+                                            <label class="col-sm-3 control-label">query <span class="required">*</span></label>
 
                                             <div class="col-sm-6">
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" required="required">
                                                     <span class="input-group-btn">
                                                         <button type="button" class="btn btn-primary" style="margin-right: 0px;" onclick="myFunction()">Go!</button>
                                                     </span>
@@ -113,12 +111,11 @@
                                         </div>
 
                                     </form>
-                                    <!-- <div id="maptest"></div> -->
-                                    <!-- <div id="posts"></div> -->
                                 </div>
                             </div>
                             <div id="resdiv" class="x_panel" style="display:none;">
                                 <div id='map'></div>
+                                <hr>
                                 <table class="table table-striped projects">
                                     <thead>
                                         <tr>
@@ -128,28 +125,8 @@
                                             <th width="1%">Longitude</th>
                                         </tr>
                                     </thead>
-                                <tbody id="posts">
-                                    <!-- <tr>
-                                        <td>
-                                            <ul class="list-inline">
-                                              <li>
-                                                <img src="images/user.png" class="avatar" alt="Avatar">
-                                              </li>
-                                            </ul>
-                                        </td>
-                                        <td>
-                                          <a><strong>name</strong></a>
-                                          <br>
-                                          <small>category</small>
-                                        </td>
-                                        <td>
-                                          <span class="label label-default" style="font-family: monospace;">Default</span>
-                                        </td>
-                                        <td>
-                                          <span class="label label-default" style="font-family: monospace;">Default</span>
-                                        </td>
-                                    </tr> -->
-                                  </tbody>
+                                    <tbody id="posts">
+                                    </tbody>
                                 </table>
                             </div>
 
@@ -200,23 +177,34 @@
         return output;
     }
 
+    function isVisibleInViewport(elem){
+        var y = elem.offsetTop;
+        var height = elem.offsetHeight;
+
+        while ( elem = elem.offsetParent )
+            y += elem.offsetTop;
+
+        var maxHeight = y + height;
+        var isVisible = ( y < ( window.pageYOffset + window.innerHeight ) ) && ( maxHeight >= window.pageYOffset );
+        return isVisible;
+
+    }
+
     function myFunction() {
         document.getElementById('resdiv').style.display = "block";
         var map;
         var items, markers_data = [];
         var content;
+        var d = new Date();
 
         document.getElementById("posts").innerHTML = "";
         var x = document.getElementById("frm1");
         var near = "near=";
         near = x.elements[0].value;
         query = x.elements[1].value;
-        // alert(near);
-        // alert(category);
 
         var near_val = near;
         var query_val = "&query=" + query;
-        var d = new Date();
         var auth = "&client_id=OSUJJBU0Z4MOAMEJBVOPIF22X5PIJ10CYQ3W3JXPJH13ATYZ&client_secret=0YRGI4STP0IETM2FGFFVVXHCVRIHBALJVH2412ZMDW5CQQ24&v=" + d.toMyString();
         var link = "https://api.foursquare.com/v2/venues/search?near=" + near_val + query_val + auth;
 
@@ -224,6 +212,8 @@
         .success(function(data) {
             if(data.response.venues.length == 0){
                 $('#req404').show();
+            } else {
+                $('#req404').hide();
             }
             var index = 0;
             $.each(data.response.venues, function (i, venues) {
@@ -256,25 +246,10 @@
         .error(function() { $('#req404').show(); });
         //.complete(function() { alert("Done"); });
 
-        // $(document).on('click', '.pan-to-marker', function (e) {
-        //     e.preventDefault();
-        //
-        //     var position, lat, lng, $index;
-        //
-        //     $index = $(this).data('marker-index');
-        //
-        //     position = map.markers[$index].getPosition();
-        //
-        //     lat = position.lat();
-        //     lng = position.lng();
-        //
-        //     map.setCenter(lat, lng);
-        // });
-
         map = new GMaps({
             div: '#map',
-            lat: 32.71533,
-            lng: -117.15726,
+            // lat: 32.71533,
+            // lng: -117.15726,
             zoom: 15,
             scrollwheel: false,
             zoomControl: true,
@@ -284,15 +259,6 @@
                 position: 'TOP_LEFT'
             },
             panControl: false,
-        });
-
-        map.addMapType("osm", {
-            getTileUrl: function(coord, zoom) {
-                return "http://tile.openstreetmap.org/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
-            },
-            tileSize: new google.maps.Size(256, 256),
-            name: "OpenStreetMap",
-            maxZoom: 18
         });
 
         map.on('marker_added', function (marker) {
@@ -314,35 +280,15 @@
            lat = position.lat();
            lng = position.lng();
 
-           map.setCenter(lat, lng);
+           map.panTo(position);
+           map.setZoom(14);
            map.hideInfoWindows();
            map.markers[$index].infoWindow.open(map, map.markers[$index]);
-           $('html,body').animate({scrollTop: $("#resdiv").offset().top},'slow');
-       });
+           var canvas = document.getElementById("map");
+           if(!isVisibleInViewport(canvas))
+               $('html,body').animate({scrollTop: $("#resdiv").offset().top},'slow');
 
-        // $.getJSON(link,function(data){
-        //     console.log(data);
-        //     // $.each(data.response.venues, function(i,product){
-        //     //     content = '<p><strong>' + product.name + '</strong>' + ' ';
-        //     //     content += product.location.lat + ' ';
-        //     //     content += product.location.lng + '</p>';
-        //     //     content += '<br/>';
-        //     //     $(content).appendTo("#posts");
-        //     // });
-        //
-        //     $.each(data.response.venues, function(i,product){
-        //     content = '<tr><td><ul class="list-inline"><li>';
-        //     content += '<img src="' + product.categories[0].icon.prefix + 'bg_32' + product.categories[0].icon.suffix + '" class="avatar" alt="Avatar">';
-        //     content += '</li></ul></td><td>';
-        //     content += '<a><strong>' + product.name + '</strong></a>';
-        //     content += '<br><small>' + product.categories[0].name + '</small></td><td style="vertical-align:middle;">';
-        //     content += '<span class="label label-default" style="font-family: monospace;">' + product.location.lat.toFixed(6) + '</span>';
-        //     content += '</td><td style="vertical-align:middle;">';
-        //     content += '<span class="label label-default" style="font-family: monospace;">' + product.location.lng.toFixed(6) + '</span>';
-        //     content += '</td></tr>';
-        //     $(content).appendTo("#posts");
-        // });
-        // });
+       });
     }
     </script>
 </body>
