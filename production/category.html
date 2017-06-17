@@ -309,7 +309,7 @@
 
             $.each(nearArr, function(i, neardata) {
                 near = neardata;
-                var content;
+                var content = "";
                 var near_val = near;
                 var category_val = "&categoryId=" + category;
                 var auth = "&client_id=OSUJJBU0Z4MOAMEJBVOPIF22X5PIJ10CYQ3W3JXPJH13ATYZ&client_secret=0YRGI4STP0IETM2FGFFVVXHCVRIHBALJVH2412ZMDW5CQQ24&v=" + d.toMyString();
@@ -343,8 +343,13 @@
                         content += '</td></tr>';
                         $(content).appendTo("#posts");
                         index++;
+                        markers_data = addmarks(markers_data);
                     });
-                    map.addMarkers(markers_data);
+                    // console.log(i+1)
+                    // if((i+1) == nearinputcount) {
+                    //     map.addMarkers(markers_data);
+                    //     console.log(markers_data);
+                    // }
                 }).error(function() { $('#req404').show(); inputError(i+1); });
                 //.complete(function() { alert("Done"); });
             });
@@ -358,7 +363,6 @@
             var link = "https://api.foursquare.com/v2/venues/search?near=" + near_val + category_val + auth;
 
             $.getJSON(link, function(data) {
-                console.log(data.response.venues.length);
                 if(data.response.venues.length == 0){
                     $('#req404').show();
                     inputError(1);
@@ -386,8 +390,8 @@
                     content += '</td></tr>';
                     $(content).appendTo("#posts");
                     index++;
+                    markers_data = addmarks(markers_data);
                 });
-                map.addMarkers(markers_data);
             }).error(function() { $('#req404').show(); inputError(1); });
             //.complete(function() { alert("Done"); });
         }
@@ -450,6 +454,11 @@
                     x[j].style.borderColor = "#ccc";
                 }
             }
+        }
+
+        function addmarks(data) {
+            map.addMarkers(data);
+            return [];
         }
     }
 

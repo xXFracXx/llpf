@@ -278,7 +278,7 @@
 
             $.each(nearArr, function(i, neardata) {
                 near = neardata;
-                var content;
+                var content = "";
                 var near_val = near;
                 var query_val = "&query=" + query;
                 var auth = "&client_id=OSUJJBU0Z4MOAMEJBVOPIF22X5PIJ10CYQ3W3JXPJH13ATYZ&client_secret=0YRGI4STP0IETM2FGFFVVXHCVRIHBALJVH2412ZMDW5CQQ24&v=" + d.toMyString();
@@ -312,8 +312,8 @@
                         content += '</td></tr>';
                         $(content).appendTo("#posts");
                         index++;
+                        markers_data = addmarks(markers_data);
                     });
-                    map.addMarkers(markers_data);
                 }).error(function() { $('#req404').show(); inputError(i+1); });
                 //.complete(function() { alert("Done"); });
             });
@@ -355,8 +355,8 @@
                     content += '</td></tr>';
                     $(content).appendTo("#posts");
                     index++;
+                    markers_data = addmarks(markers_data);
                 });
-                map.addMarkers(markers_data);
             }).error(function() { $('#req404').show(); inputError(1); });
             //.complete(function() { alert("Done"); });
         }
@@ -419,6 +419,11 @@
                     x[j].style.borderColor = "#ccc";
                 }
             }
+        }
+
+        function addmarks(data) {
+            map.addMarkers(data);
+            return [];
         }
     }
 
